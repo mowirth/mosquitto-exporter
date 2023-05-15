@@ -8,7 +8,7 @@ RUN make build
 
 FROM scratch
 COPY --from=build /etc/ssl/certs/ca-certificates.crt /etc/ssl/certs/
-COPY --from=build /go/src/app/bin/mosquitto_exporter /mosquitto_exporter
+COPY --from=build /go/src/app/bin/mosquitto-exporter /mosquitto_exporter
 
 EXPOSE 9234
 
