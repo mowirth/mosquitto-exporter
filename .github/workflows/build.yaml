@@ -27,4 +27,4 @@ jobs:
         with:
           push: true
           platforms: linux/amd64,linux/arm64
-          tags: mowirth/postgres-exporter:latest
+          tags: mowirth/mosquitto-exporter:latest
