@@ -1,5 +1,13 @@
 Mosquitto Exporter
 =============================
+
+
+## Forked to provide a multi-arch version for this exporter.
+
+Image is located here: [mowirth/mosquitto-exporter]()
+
+---
+
 Prometheus exporter for the [Mosquitto MQTT message broker](https://mosquitto.org/).
 
 There is a docker image available:

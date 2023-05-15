@@ -1,6 +1,7 @@
 package main
 
 import (
+	"crypto/tls"
 	"log"
 	"net/http"
 	"os"
@@ -9,12 +10,10 @@ import (
 	"strings"
 	"time"
 
-	"crypto/tls"
-
-	"github.com/codegangsta/cli"
 	mqtt "github.com/eclipse/paho.mqtt.golang"
 	"github.com/prometheus/client_golang/prometheus"
 	"github.com/prometheus/client_golang/prometheus/promhttp"
+	"github.com/urfave/cli"
 )
 
 const (
@@ -196,13 +195,13 @@ func runServer(c *cli.Context) {
 
 // $SYS/broker/bytes/received
 func processUpdate(topic, payload string) {
-	//log.Printf("Got broker update with topic %s and data %s", topic, payload)
+	// log.Printf("Got broker update with topic %s and data %s", topic, payload)
 	if _, ok := ignoreKeyMetrics[topic]; !ok {
 		if _, ok := counterKeyMetrics[topic]; ok {
 			// log.Printf("Processing counter metric %s with data %s", topic, payload)
 			processCounterMetric(topic, payload)
 		} else {
-			//log.Printf("Processing gauge metric %s with data %s", topic, payload)
+			// log.Printf("Processing gauge metric %s with data %s", topic, payload)
 			processGaugeMetric(topic, payload)
 		}
 	}
